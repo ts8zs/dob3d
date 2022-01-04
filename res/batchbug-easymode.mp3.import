@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/batchbug-easymode.mp3-6e4582fed6696d2b27984e06d0ede752.mp3str"
+
+[deps]
+
+source_file="res://res/batchbug-easymode.mp3"
+dest_files=[ "res://.import/batchbug-easymode.mp3-6e4582fed6696d2b27984e06d0ede752.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

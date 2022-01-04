@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://logo.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+
+func _ready():
+	# Clear the viewport.
+	var viewport = $Viewport
+	$Viewport.set_clear_mode(Viewport.CLEAR_MODE_ONLY_NEXT_FRAME)
+
+	# Let two frames pass to make sure the vieport is captured.
+	yield(get_tree(), \"idle_frame\")
+	yield(get_tree(), \"idle_frame\")
+	yield(get_tree(), \"idle_frame\")
+
+	# Retrieve the texture and set it to the viewport quad.
+	$ViewportQuad.material_override.albedo_texture = viewport.get_texture()
+"
+
+[node name="Spatial" type="Spatial"]
+script = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.61297 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 600, 400 )
+transparent_bg = true
+hdr = false
+usage = 0
+render_target_v_flip = true
+
+[node name="Node2D" parent="Viewport" instance=ExtResource( 1 )]
